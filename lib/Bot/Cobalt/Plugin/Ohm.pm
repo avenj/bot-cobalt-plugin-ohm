@@ -96,7 +96,7 @@ sub _calc {
   #  A = V / O
   #  A = W / V
   #  A = sqrt(W / O)
-  if ( ! $values{a} ) {
+  unless (defined $values{a}) {
     $values{a} = 
         $values{v} && $values{o} ? $values{v} / $values{o}
       : $values{w} && $values{v} ? $values{w} / $values{v}
@@ -108,7 +108,7 @@ sub _calc {
   # W = ( V * V ) / O
   # W = ( A * A ) * O
   # W = V * R
-  if ( ! $values{w} ) {
+  unless (defined $values{w}) {
     $values{w} =
         $values{v} && $values{o} ? ($values{v} ** 2) / $values{o}
       : $values{a} && $values{o} ? ($values{a} ** 2) * $values{o}
@@ -120,7 +120,7 @@ sub _calc {
   # O = V / A
   # O = ( V * V ) * W
   # O = W / ( A * A )
-  if ( ! $values{o} ) {
+  unless (defined $values{o}) {
     $values{o} =
         $values{v} && $values{a} ? $values{v} / $values{a}
       : $values{v} && $values{w} ? ($values{v} ** 2) * $values{w}
@@ -132,7 +132,7 @@ sub _calc {
   # V = sqrt( W * O )
   # V = W / A
   # V = A * O
-  if ( ! $values{v} ) {
+  unless (defined $values{v}) {
     $values{v} =
         $values{w} && $values{o} ? sqrt( $values{w} * $values{o} )
       : $values{w} && $values{a} ? $values{w} / $values{a}
@@ -144,7 +144,7 @@ sub _calc {
 
   sprintf 
     "%.2fw/%.2fv @ %.2famps against %.2fohm" =>
-      map {; $values{$_} } qw/ w v a o/
+      map {; $values{$_} } qw/ w v a o /
 }
 
 1;
