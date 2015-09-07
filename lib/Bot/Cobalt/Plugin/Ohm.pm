@@ -171,7 +171,7 @@ Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator
 =head1 DESCRIPTION
 
 A simple Ohm's law calculator; given a string specifying parameters in the
-form of '<N>a <N>o <N>w <N>v', attempts to fill in the blanks.
+form of C<< <N>a <N>o <N>w <N>v >>, attempts to fill in the blanks.
 
 =head1 AUTHOR
 
