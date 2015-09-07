@@ -15,9 +15,7 @@ sub new { bless [], shift }
 sub Cobalt_register {
   my ($self, $core) = splice @_, 0, 2;
 
-  my @events = map { 'public_cmd_'.$_ } 
-    qw/ ohm watt amp volt / ;
-
+  my @events = map {; 'public_cmd_'.$_ } qw/ ohm watt amp volt /;
   register $self, SERVER => [ @events ];
 
   $core->log->info("Loaded Ohm");
@@ -31,10 +29,12 @@ sub Cobalt_unregister {
   PLUGIN_EAT_NONE
 }
 
-for (qw/watt amp volt/) {
+{
   no strict 'refs';
-  my $meth = 'Bot_public_cmd_'.$_;
-  *{__PACKAGE__.'::'.$meth} = *Bot_public_cmd_ohm
+  for (qw/watt amp volt/) {
+    my $meth = 'Bot_public_cmd_'.$_;
+    *{__PACKAGE__.'::'.$meth} = *Bot_public_cmd_ohm
+  }
 }
 
 sub Bot_public_cmd_ohm {
@@ -69,7 +69,7 @@ sub Bot_public_cmd_ohm {
 }
 
 # The rest of this is pulled directly from SYMKAT's irssi script mentioned
-# in the header of this file:
+# in the header of this file, other than strictly stylistic changes:
 
 sub _parse_values {
   my ($self, $message) = @_;
