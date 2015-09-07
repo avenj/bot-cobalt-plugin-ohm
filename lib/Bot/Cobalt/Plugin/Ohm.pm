@@ -165,12 +165,18 @@ Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator
 
 =head1 SYNOPSIS
 
+  # What's my voltage and amperage firing my 0.87 Ohm coil at 25W?
+  !ohm 0.87o 25w
+
 =head1 DESCRIPTION
+
+A simple Ohm's law calculator; given a string specifying parameters in the
+form of '<N>a <N>o <N>w <N>v', attempts to fill in the blanks.
 
 =head1 AUTHOR
 
 Kaitlyn Parkhurst (CPAN: C<SYMKAT>) wrote the calculator as an irssi script.
 
-Adapted to L<Bot::Cobalt> by Jon Portnoy <avenj@cobaltirc.org>
+Adapted (with permission) to L<Bot::Cobalt> by Jon Portnoy <avenj@cobaltirc.org>
 
 =cut
