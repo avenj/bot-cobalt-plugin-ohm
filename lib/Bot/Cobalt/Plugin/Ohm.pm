@@ -97,57 +97,49 @@ sub _calc {
   #  A = W / V
   #  A = sqrt(W / O)
   if ( ! $values{a} ) {
-    if ( $values{v} && $values{o} ) {
-      $values{a} = ( $values{v} / $values{o} );
-    } elsif ( $values{w} && $values{v} ) {
-      $values{a} = ( $values{w} / $values{v} );
-    } elsif ( $values{w} && $values{o} ) {
-      $values{a} = sqrt( ( $values{w} / $values{o} ) );
-    } else {
-      return ""
-    }
+    $values{a} = 
+        $values{v} && $values{o} ? $values{v} / $values{o}
+      : $values{w} && $values{v} ? $values{w} / $values{v}
+      : $values{w} && $values{o} ? sqrt( $values{w} / $values{o} )
+      : undef
+    ;
+    return '' unless defined $values{a}
   }
   # W = ( V * V ) / O
   # W = ( A * A ) * O
   # W = V * R
   if ( ! $values{w} ) {
-    if ( $values{v} && $values{o} ) {
-      $values{w} = ( ( $values{v} * $values{v} ) / $values{o} );
-    } elsif ( $values{a} && $values{o} ) {
-      $values{w} = ( ( $values{a} * $values{a} ) * $values{o} );
-    } elsif ( $values{v} && $values{a} ) {
-      $values{w} = ( $values{v} * $values{a} );
-    } else {
-      return ""
-    }
+    $values{w} =
+        $values{v} && $values{o} ? ($values{v} ** 2) / $values{o}
+      : $values{a} && $values{o} ? ($values{a} ** 2) * $values{o}
+      : $values{v} && $values{a} ? $values{v} * $values{a}
+      : undef
+    ;
+    return '' unless defined $values{w}
   }
   # O = V / A
   # O = ( V * V ) * W
   # O = W / ( A * A )
   if ( ! $values{o} ) {
-    if ( $values{v} && $values{a} ) {
-      $values{o} = ( $values{v} / $values{a} );
-    } elsif ( $values{v} && $values{w} ) {
-      $values{o} = ( ( $values{v} * $values{v} ) * $values{w} );
-    } elsif ( $values{w} && $values{a} ) {
-      $values{o} = ( $values{w} / ( $values{a} * $values{a} ) );
-    } else {
-      return ""
-    }
+    $values{o} =
+        $values{v} && $values{a} ? $values{v} / $values{a}
+      : $values{v} && $values{w} ? ($values{v} ** 2) * $values{w}
+      : $values{w} && $values{a} ? $values{w} / ($values{a} ** 2)
+      : undef
+    ;
+    return '' unless defined $values{o}
   }
   # V = sqrt( W * O )
   # V = W / A
   # V = A * O
   if ( ! $values{v} ) {
-    if ( $values{w} && $values{o} ) {
-      $values{v} = sqrt( $values{w} * $values{o} );
-    } elsif ( $values{w} && $values{a} ) {
-      $values{v} = ( $values{w} / $values{a} );
-    } elsif ( $values{a} && $values{o} ) {
-      $values{v} = ( $values{a} * $values{o} );
-    } else {
-       return ""
-    }
+    $values{v} =
+        $values{w} && $values{o} ? sqrt( $values{w} * $values{o} )
+      : $values{w} && $values{a} ? $values{w} / $values{a}
+      : $values{a} && $values{o} ? $values{a} * $values{o}
+      : undef
+    ;
+    return '' unless defined $values{v}
   }
 
   sprintf 
