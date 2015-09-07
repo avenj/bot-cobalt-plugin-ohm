@@ -100,7 +100,7 @@ sub _calc {
     $values{a} = 
         $values{v} && $values{o} ? $values{v} / $values{o}
       : $values{w} && $values{v} ? $values{w} / $values{v}
-      : $values{w} && $values{o} ? sqrt( $values{w} / $values{p} )
+      : $values{w} && $values{o} ? sqrt( $values{w} / $values{o} )
       : undef
     ;
     return '' unless defined $values{a}
