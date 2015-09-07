@@ -1,0 +1,13 @@
+# NAME
+
+Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator
+
+# SYNOPSIS
+
+# DESCRIPTION
+
+# AUTHOR
+
+Kaitlyn Parkhurst (CPAN: `SYMKAT`) wrote the calculator as an irssi script.
+
+Adapted to [Bot::Cobalt](https://metacpan.org/pod/Bot::Cobalt) by Jon Portnoy <avenj@cobaltirc.org>
