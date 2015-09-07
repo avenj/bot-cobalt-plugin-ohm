@@ -1,5 +1,8 @@
 package Bot::Cobalt::Plugin::Ohm;
 
+# A simple Ohm's law calculator borrowed from SYMKAT:
+# https://gist.github.com/symkat/da287f0993e708b53701
+
 use strictures 2;
 
 use Bot::Cobalt;
@@ -64,6 +67,9 @@ sub Bot_public_cmd_ohm {
   
   PLUGIN_EAT_NONE
 }
+
+# The rest of this is pulled directly from SYMKAT's irssi script mentioned
+# in the header of this file:
 
 sub _parse_values {
   my ($self, $message) = @_;
@@ -152,5 +158,19 @@ sub _calc {
 1;
 
 =pod
+
+=head1 NAME
+
+Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator
+
+=head1 SYNOPSIS
+
+=head1 DESCRIPTION
+
+=head1 AUTHOR
+
+Kaitlyn Parkhurst (CPAN: C<SYMKAT>) wrote the calculator as an irssi script.
+
+Adapted to L<Bot::Cobalt> by Jon Portnoy <avenj@cobaltirc.org>
 
 =cut
