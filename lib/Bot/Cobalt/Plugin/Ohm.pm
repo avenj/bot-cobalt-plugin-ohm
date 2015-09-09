@@ -150,7 +150,7 @@ sub _calc {
 
 =head1 NAME
 
-Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator
+Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator for Bot::Cobalt
 
 =head1 SYNOPSIS
 
