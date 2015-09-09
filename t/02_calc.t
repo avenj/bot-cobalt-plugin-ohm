@@ -11,6 +11,9 @@ is_deeply \%parsed, +{ o => 1, w => 2, a => 3, v => 4 },
 %parsed = $calc->_parse_values('1o 2w');
 is_deeply \%parsed, +{ o => 1, w => 2 },
   'parsing a few values seems ok';
+%parsed = $calc->_parse_values('5V 0.5O');
+is_deeply \%parsed, +{ v => 5, o => 0.5 },
+  'uppercase ok';
 
 %parsed = $calc->_parse_values('some nonsense');
 ok ! keys %parsed, 'bad string returned no values';

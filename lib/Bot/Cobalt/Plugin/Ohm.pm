@@ -69,22 +69,22 @@ sub Bot_public_cmd_ohm {
 }
 
 # The rest of this is pulled directly from SYMKAT's irssi script mentioned
-# in the header of this file, other than strictly stylistic changes:
+# in the header of this file, other than stylistic changes:
 
 sub _parse_values {
   my ($self, $message) = @_;
   my %values = ();
 
-  if ( $message =~ /(\d+(?:\.\d+)?)o/ ) {
+  if ( $message =~ /(\d+(?:\.\d+)?)o/i ) {
     $values{o} = $1;
   } 
-  if ( $message =~ /(\d+(?:\.\d+)?)w/ ) {
+  if ( $message =~ /(\d+(?:\.\d+)?)w/i ) {
     $values{w} = $1;
   } 
-  if ( $message =~ /(\d+(?:\.\d+)?)a/ ) {
+  if ( $message =~ /(\d+(?:\.\d+)?)a/i ) {
     $values{a} = $1;
   } 
-  if ( $message =~ /(\d+(?:\.\d+)?)v/ ) {
+  if ( $message =~ /(\d+(?:\.\d+)?)v/i ) {
     $values{v} = $1;
   } 
 
