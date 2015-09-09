@@ -1,6 +1,6 @@
 # NAME
 
-Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator
+Bot::Cobalt::Plugin::Ohm - Simple Ohm's law calculator for Bot::Cobalt
 
 # SYNOPSIS
 
