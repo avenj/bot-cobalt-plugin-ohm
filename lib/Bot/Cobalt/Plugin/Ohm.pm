@@ -68,8 +68,7 @@ sub Bot_public_cmd_ohm {
   PLUGIN_EAT_NONE
 }
 
-# The rest of this is pulled directly from SYMKAT's irssi script mentioned
-# in the header of this file, other than stylistic changes:
+# These routines stolen directly from SYMKAT and then hacked to shreds:
 
 sub _parse_values {
   my ($self, $message) = @_;
