@@ -8,6 +8,8 @@ use strictures 2;
 use Bot::Cobalt;
 use Bot::Cobalt::Common;
 
+use Try::Tiny;
+
 sub new { bless [], shift }
 
 sub Cobalt_register {
@@ -53,7 +55,9 @@ sub Bot_public_cmd_ohm {
       last RESP
     }
 
-    $resp = $self->_calc(%parsed);
+    $resp = 
+      try { $self->_calc(%parsed) }
+        catch { "Calc failure; $_" };
 
     unless (length $resp) {
       $resp = "Calc failure; malformed input from parser";
@@ -100,7 +104,8 @@ sub _calc {
       : $values{w} && $values{o} ? sqrt( $values{w} / $values{o} )
       : undef
     ;
-    return '' unless defined $values{a}
+    die "Not enough information to calculate amperage"
+      unless defined $values{a}
   }
   # W = ( V * V ) / O
   # W = ( A * A ) * O
@@ -112,7 +117,8 @@ sub _calc {
       : $values{v} && $values{a} ? $values{v} * $values{a}
       : undef
     ;
-    return '' unless defined $values{w}
+    die "Not enough information to calculate wattage"
+      unless defined $values{w}
   }
   # O = V / A
   # O = ( V * V ) * W
@@ -124,7 +130,8 @@ sub _calc {
       : $values{w} && $values{a} ? $values{w} / ($values{a} ** 2)
       : undef
     ;
-    return '' unless defined $values{o}
+    die "Not enough information to calculate ohms"
+      unless defined $values{o}
   }
   # V = sqrt( W * O )
   # V = W / A
@@ -136,7 +143,8 @@ sub _calc {
       : $values{a} && $values{o} ? $values{a} * $values{o}
       : undef
     ;
-    return '' unless defined $values{v}
+    die "Not enough information to calculate voltage"
+      unless defined $values{v}
   }
 
   sprintf 
