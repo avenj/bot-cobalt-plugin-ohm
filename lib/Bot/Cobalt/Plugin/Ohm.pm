@@ -8,8 +8,6 @@ use strictures 2;
 use Bot::Cobalt;
 use Bot::Cobalt::Common;
 
-use Try::Tiny;
-
 sub new { bless [], shift }
 
 sub Cobalt_register {
