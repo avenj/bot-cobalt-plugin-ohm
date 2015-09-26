@@ -104,7 +104,7 @@ sub _calc {
       : $values{w} && $values{o} ? sqrt( $values{w} / $values{o} )
       : undef
     ;
-    die "Not enough information to calculate amperage"
+    die "Not enough information to calculate amperage\n"
       unless defined $values{a}
   }
   # W = ( V * V ) / O
@@ -117,7 +117,7 @@ sub _calc {
       : $values{v} && $values{a} ? $values{v} * $values{a}
       : undef
     ;
-    die "Not enough information to calculate wattage"
+    die "Not enough information to calculate wattage\n"
       unless defined $values{w}
   }
   # O = V / A
@@ -130,7 +130,7 @@ sub _calc {
       : $values{w} && $values{a} ? $values{w} / ($values{a} ** 2)
       : undef
     ;
-    die "Not enough information to calculate ohms"
+    die "Not enough information to calculate ohms\n"
       unless defined $values{o}
   }
   # V = sqrt( W * O )
@@ -143,7 +143,7 @@ sub _calc {
       : $values{a} && $values{o} ? $values{a} * $values{o}
       : undef
     ;
-    die "Not enough information to calculate voltage"
+    die "Not enough information to calculate voltage\n"
       unless defined $values{v}
   }
 
