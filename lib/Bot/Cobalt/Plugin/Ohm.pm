@@ -48,8 +48,7 @@ sub Bot_public_cmd_ohm {
   my $resp;
   RESP: {
     unless (keys %parsed) {
-      # FIXME better errors
-      $resp = "Parser failure; malformed input";
+      $resp = "Parser failure, try input in the form of: <I>a <P>w <R>o <E>v";
       last RESP
     }
 
