@@ -8,6 +8,8 @@ use strictures 2;
 use Bot::Cobalt;
 use Bot::Cobalt::Common;
 
+use Regexp::Common 'number';
+
 sub new { bless [], shift }
 
 sub Cobalt_register {
@@ -73,16 +75,16 @@ sub _parse_values {
   my ($self, $message) = @_;
   my %values = ();
 
-  if ( $message =~ /(\d+(?:\.\d+)?)o/i ) {
+  if ( $message =~ /($RE{num}{real})o/i ) {
     $values{o} = $1;
   } 
-  if ( $message =~ /(\d+(?:\.\d+)?)w/i ) {
+  if ( $message =~ /($RE{num}{real})w/i ) {
     $values{w} = $1;
   } 
-  if ( $message =~ /(\d+(?:\.\d+)?)a/i ) {
+  if ( $message =~ /($RE{num}{real})a/i ) {
     $values{a} = $1;
   } 
-  if ( $message =~ /(\d+(?:\.\d+)?)v/i ) {
+  if ( $message =~ /($RE{num}{real})v/i ) {
     $values{v} = $1;
   } 
 

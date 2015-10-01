@@ -24,6 +24,11 @@ my $str = $calc->_calc(%parsed);
 cmp_ok $str, 'eq', '60.50w/5.50v @ 11.00amps against 0.50ohm',
   'voltage + resistance calc ok';
 
+%parsed = $calc->_parse_values('5.5v .5o');
+$str = $calc->_calc(%parsed);
+cmp_ok $str, 'eq', '60.50w/5.50v @ 11.00amps against 0.50ohm',
+  'voltage + resistance calc (no leading zero) ok';
+
 eval {; $calc->_calc() };
 like $@, qr/Not enough information/, '_calc exception looks ok';
 
