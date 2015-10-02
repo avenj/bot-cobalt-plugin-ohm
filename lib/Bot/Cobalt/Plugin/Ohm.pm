@@ -49,7 +49,7 @@ sub Bot_public_cmd_ohm {
 
   my $resp = keys %parsed ?
       try { $self->_calc(%parsed) } catch { "Calc failure; $_" }
-    : "Parser failure, try input in the form of: <I>a <P>w <R>o <E>v";
+    : "Parser failure; try input in the form of: <I>a <P>w <R>o <E>v";
 
   broadcast message => $context, $msg->channel, "${src_nick}: $resp";
   
