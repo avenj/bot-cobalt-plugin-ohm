@@ -60,20 +60,13 @@ sub Bot_public_cmd_ohm {
 
 sub _parse_values {
   my ($self, $message) = @_;
-  my %values = ();
+  my %values;
 
-  if ( $message =~ /($RE{num}{real})o/i ) {
-    $values{o} = $1;
-  } 
-  if ( $message =~ /($RE{num}{real})w/i ) {
-    $values{w} = $1;
-  } 
-  if ( $message =~ /($RE{num}{real})a/i ) {
-    $values{a} = $1;
-  } 
-  if ( $message =~ /($RE{num}{real})v/i ) {
-    $values{v} = $1;
-  } 
+  for my $unit (qw/o w a v/) {
+    if ($message =~ m/($RE{num}{real})$unit/i) {
+      $values{$unit} = $1
+    }
+  }
 
   %values
 }
