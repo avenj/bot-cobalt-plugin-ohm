@@ -47,22 +47,9 @@ sub Bot_public_cmd_ohm {
   my $str = join '', @{ $msg->message_array };
   my %parsed = $self->_parse_values($str);
 
-  my $resp;
-  RESP: {
-    unless (keys %parsed) {
-      $resp = "Parser failure, try input in the form of: <I>a <P>w <R>o <E>v";
-      last RESP
-    }
-
-    $resp = 
-      try { $self->_calc(%parsed) }
-        catch { "Calc failure; $_" };
-
-    unless (length $resp) {
-      $resp = "Calc failure; malformed input from parser";
-      last RESP
-    }
-  } # RESP
+  my $resp = keys %parsed ?
+      try { $self->_calc(%parsed) } catch { "Calc failure; $_" }
+    : "Parser failure, try input in the form of: <I>a <P>w <R>o <E>v";
 
   broadcast message => $context, $msg->channel, "${src_nick}: $resp";
   
