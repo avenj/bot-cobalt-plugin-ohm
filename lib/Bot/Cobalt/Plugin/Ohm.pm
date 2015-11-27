@@ -63,7 +63,7 @@ sub _parse_values {
   my %values;
 
   for my $unit (qw/o w a v/) {
-    if ($message =~ m/($RE{num}{real})$unit/i) {
+    if ($message =~ m/($RE{num}{real})(?i)$unit/) {
       $values{$unit} = $1
     }
   }
